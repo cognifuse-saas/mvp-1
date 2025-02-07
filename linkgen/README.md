@@ -69,7 +69,7 @@ GET `/api/v1/campaigns/`
 
 Get a Campaign by ID
 
-GET /`api/v1/campaigns/{campaign_id}`
+GET `/api/v1/campaigns/{campaign_id}`
 
 
 Update a Campaign
