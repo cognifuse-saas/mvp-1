@@ -28,14 +28,15 @@ pip install -r requirements.txt
 ```
 ### Set Up Environment Variables
 
-- Create a `.env ` file in the root directory:
+Create a `.env ` file in the root directory:
 
-  ```
-  DB_USER=your_user
-  DB_PASSWORD=your_password
-  DB_HOST=localhost
-  DB_NAME=cognifuse
-  ```
+```
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_NAME=cognifuse
+```
+
 
 ### Apply Database Migrations
 
