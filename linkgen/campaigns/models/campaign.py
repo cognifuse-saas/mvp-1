@@ -9,4 +9,5 @@ class CampaignModel(Base):
     description = Column(String, nullable=False)
     start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=False)
+    status = Column(String, nullable=False, default="scheduled")  # Example default status
     active = Column(Boolean, default=True, nullable=False)
