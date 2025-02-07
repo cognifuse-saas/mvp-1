@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
+from typing import List, Optional
 from campaigns.models.campaign import CampaignModel
 from campaigns.schemas.campaign import (
     Campaign as CampaignSchema,
@@ -10,6 +11,7 @@ from database.db_session import get_db
 
 campaign_router = APIRouter()
 
+
 # Create a new campaign
 @campaign_router.post("/", response_model=CampaignSchema)
 def create_campaign(campaign: CampaignCreate, db: Session = Depends(get_db)):
@@ -19,23 +21,25 @@ def create_campaign(campaign: CampaignCreate, db: Session = Depends(get_db)):
     db.refresh(db_campaign)
     return db_campaign
 
-# Get all campaigns with pagination and proper serialization
+
+# Get all campaigns with filtering and pagination
 @campaign_router.get("/", response_model=dict)
 def get_campaigns(
     db: Session = Depends(get_db),
     page: int = Query(1, alias="page", ge=1),
     per_page: int = Query(10, alias="per_page", ge=1, le=100),
+    status: str = Query(None, alias="status"),  # Accept status as a query param
 ):
-    total = db.query(CampaignModel).count()
-    campaigns = (
-        db.query(CampaignModel).offset((page - 1) * per_page).limit(per_page).all()
-    )
+    query = db.query(CampaignModel)
 
-    # Convert SQLAlchemy models to Pydantic schemas
-    campaigns_data = [CampaignSchema.model_validate(c) for c in campaigns]
+    if status:
+        query = query.filter(CampaignModel.status == status)
+
+    total = query.count()
+    campaigns = query.offset((page - 1) * per_page).limit(per_page).all()
 
     return {
-        "data": campaigns_data,
+        "data": [CampaignSchema.model_validate(c) for c in campaigns],
         "total": total,
         "page": page,
         "totalPages": (total // per_page) + (1 if total % per_page else 0),
@@ -51,6 +55,7 @@ def get_campaign_by_id(campaign_id: int, db: Session = Depends(get_db)):
     if db_campaign is None:
         raise HTTPException(status_code=404, detail="Campaign not found")
     return db_campaign
+
 
 # Update a campaign
 @campaign_router.put("/{campaign_id}", response_model=CampaignSchema)
@@ -71,7 +76,8 @@ def update_campaign(
     db.refresh(db_campaign)
     return db_campaign
 
-# Delete a campaign (Soft Delete)
+
+# Delete a campaign
 @campaign_router.delete("/{campaign_id}", response_model=dict)
 def delete_campaign(campaign_id: int, db: Session = Depends(get_db)):
     db_campaign = (
