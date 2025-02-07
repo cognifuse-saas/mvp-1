@@ -1,12 +1,12 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, Date
 from database.db_session import Base
 
 class Campaign(Base):
     __tablename__ = "campaigns"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True, nullable=False)
+    title = Column(String, index=True, nullable=False)
+    description = Column(String, nullable=False)
+    start_date = Column(Date, nullable=False)
+    end_date = Column(Date, nullable=False)
     active = Column(Boolean, default=True, nullable=False)
-
-# Explicitly define what should be accessible when importing from this module
-__all__ = ["Campaign"]

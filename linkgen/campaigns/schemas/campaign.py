@@ -19,10 +19,12 @@ class CampaignUpdate(CampaignBase):
     description: Optional[str] = None
     start_date: Optional[date] = None
     end_date: Optional[date] = None
+    active: Optional[bool] = None
 
-# Full schema for returning campaign details (with id)
+# Full schema for returning campaign details (with id and active status)
 class Campaign(CampaignBase):
     id: int
+    active: bool
 
     class Config:
         from_attributes = True
