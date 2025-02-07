@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, Date
 from database.db_session import Base
 
-class Campaign(Base):
+class CampaignModel(Base):
     __tablename__ = "campaigns"
 
     id = Column(Integer, primary_key=True, index=True)
