@@ -15,7 +15,9 @@ LinkGen backend is designed for managing LinkedIn automation campaigns. This REA
         -  FastAPI
 ### Clone the Repository
 
-`git clone git@github.com:cognifuse-saas/mvp-1.git && cd linkgen`
+```
+git clone git@github.com:cognifuse-saas/mvp-1.git && cd linkgen
+```
 
 ### Install Dependencies
 
@@ -37,11 +39,15 @@ pip install -r requirements.txt
 
 ### Apply Database Migrations
 
-`alembic upgrade head`
+```
+alembic upgrade head
+```
 
 ### Run the Backend
 
-`uvicorn fastapi_app.main:app --reload`
+```
+uvicorn fastapi_app.main:app --reload
+```
 
 ### API Endpoints
 
