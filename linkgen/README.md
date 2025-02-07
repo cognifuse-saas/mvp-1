@@ -6,13 +6,13 @@ LinkGen backend is designed for managing LinkedIn automation campaigns. This REA
 
 ### Project Setup
 
-**Prerequisites**
+        Prerequisites
 
-   -  Python 3.10+
+        -  Python 3.10+
 
-   -  PostgreSQL
+        -  PostgreSQL
 
-   - FastAPI
+        - FastAPI
 ### Clone the Repository
 
 `git clone git@github.com:cognifuse-saas/mvp-1.git && cd linkgen`
