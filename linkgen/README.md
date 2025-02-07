@@ -8,13 +8,11 @@ LinkGen backend is designed for managing LinkedIn automation campaigns. This REA
 
 **Prerequisites**
 
-       -  Python 3.10+
+   -  Python 3.10+
 
-       -  PostgreSQL
+   -  PostgreSQL
 
-        - FastAPI
-
-
+    - FastAPI
 ### Clone the Repository
 
 `git clone git@github.com:cognifuse-saas/mvp-1.git && cd linkgen`
@@ -26,17 +24,16 @@ python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
-
 ### Set Up Environment Variables
 
 - Create a `.env ` file in the root directory:
 
-    ```
-    DB_USER=your_user
-    DB_PASSWORD=your_password
-    DB_HOST=localhost
-    DB_NAME=cognifuse
-    ```
+  ```
+  DB_USER=your_user
+  DB_PASSWORD=your_password
+  DB_HOST=localhost
+  DB_NAME=cognifuse
+  ```
 
 ### Apply Database Migrations
 
@@ -47,8 +44,10 @@ pip install -r requirements.txt
 `uvicorn fastapi_app.main:app --reload`
 
 ### API Endpoints
+
 Create a Campaign
 POST `/api/v1/campaigns/` Request Body:
+
 ```
 {
   "title": "Black Friday Sale",
@@ -56,17 +55,22 @@ POST `/api/v1/campaigns/` Request Body:
   "start_date": "2025-11-25",
   "end_date": "2025-11-30"
 }
-```    
-
+```
 Get All Campaigns
+
+
 GET `/api/v1/campaigns/`
 
-
 Get a Campaign by ID
+
 GET /`api/v1/campaigns/{campaign_id}`
 
+
 Update a Campaign
+
+
 PUT `/api/v1/campaigns/{campaign_id}`
+
 ```
     {
     "title": "Updated Title",
@@ -74,4 +78,6 @@ PUT `/api/v1/campaigns/{campaign_id}`
     }
 ```
 Delete a Campaign
+
+
 DELETE `/api/v1/campaigns/{campaign_id}`
