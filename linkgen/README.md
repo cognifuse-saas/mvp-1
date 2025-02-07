@@ -50,6 +50,14 @@ alembic upgrade head
 uvicorn fastapi_app.main:app --reload
 ```
 
+## API Documentation
+
+FastAPI provides an interactive API documentation system for testing endpoints:
+
+- Swagger UI: http://127.0.0.1:8000/docs
+
+- ReDoc: http://127.0.0.1:8000/redoc
+
 ### API Endpoints
 
 Create a Campaign
