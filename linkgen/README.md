@@ -52,7 +52,7 @@ uvicorn fastapi_app.main:app --reload
 ### API Endpoints
 
 Create a Campaign
-POST `/api/v1/campaigns/` Request Body:
+POST `/api/v1/campaigns/`
 
 ```
 {
