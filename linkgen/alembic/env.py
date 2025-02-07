@@ -5,7 +5,7 @@ import os
 
 # Import Base and all models
 from database.db_session import Base
-from campaigns.models.campaign import Campaign  
+from campaigns.models.campaign import CampaignModel
 
 # Load environment variables
 load_dotenv()
