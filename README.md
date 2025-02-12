@@ -1,98 +1,132 @@
-# LinkedIn Automation Tool - Frontend
+# LinkedIn Automation Tool
 
-A modern React application for managing LinkedIn outreach campaigns with advanced automation features.
+A powerful LinkedIn automation tool for managing connections, sending personalized messages, and automating outreach campaigns.
 
 ## Features
 
-- Campaign Management
-- Analytics Dashboard
-- Lead Scoring
-- IP Rotation Safety
-- Real-time Performance Tracking
+### Core Features
+- 🔍 LinkedIn Profile Search
+- 🤝 Automated Connection Requests
+- 💬 Message Follow-ups
+- 🤖 AI-Powered Message Generation
+- ⚡ Rate Limiting & Safety Features
 
 ## Tech Stack
 
+### Backend
+- Python 3.8+
+- FastAPI
+- LinkedIn API
+- OpenAI Integration
+
+### Frontend
 - React 18
 - TypeScript
-- Framer Motion
-- Recharts
+- Vite
 - TailwindCSS
 
 ## Getting Started
 
 ### Prerequisites
-
-- Node.js 16+
-- npm or yarn
+- Python 3.8 or higher
+- Node.js 16 or higher
+- LinkedIn Account
+- OpenAI API Key
 
 ### Installation
 
-1. Clone the repository
+1. Clone the repository:
 ```bash
 git clone [your-repo-url]
 cd [your-repo-name]
 ```
 
-2. Install dependencies
+2. Install backend dependencies:
 ```bash
-npm install
-# or
-yarn install
+pip install -r requirements.txt
 ```
 
-3. Create environment file
+3. Install frontend dependencies:
+```bash
+npm install
+```
+
+4. Set up environment variables:
 ```bash
 cp .env.example .env
 ```
+Edit `.env` with your credentials:
+- `LINKEDIN_EMAIL`: Your LinkedIn email
+- `LINKEDIN_PASSWORD`: Your LinkedIn password
+- `OPENAI_API_KEY`: Your OpenAI API key
+- Other configuration variables as needed
 
-4. Start development server
+### Running the Application
+
+1. Start the backend server:
+```bash
+cd src/api
+python run.py
+```
+The API will be available at `http://localhost:8000`
+
+2. Start the frontend development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
+The frontend will be available at `http://localhost:5173`
 
-## Development
+## API Endpoints
 
-### Environment Variables
+### Search
+- `POST /search`
+  - Search for LinkedIn profiles
+  - Parameters: `keywords`, `limit`
 
-See `.env.example` for all required environment variables.
+### Connection Requests
+- `POST /connect`
+  - Send connection requests
+  - Parameters: `profile_id`, `message` (optional)
 
-### Mock Data
+### Messages
+- `POST /message`
+  - Send messages to connections
+  - Parameters: `profile_id`, `message`
 
-The application uses mock data by default. To use real API:
-1. Set `REACT_APP_USE_MOCK_DATA=false` in your `.env`
-2. Ensure backend API is running at `REACT_APP_API_BASE_URL`
+## Safety Features
 
-### Project Structure
+- Rate limiting for LinkedIn requests
+- Daily connection request limits
+- Random delays between actions
+- Error handling and retry mechanisms
 
-```
-src/
-├── components/     # Reusable UI components
-├── pages/         # Page components
-├── types/         # TypeScript interfaces
-├── mocks/         # Mock data
-├── services/      # API services
-└── config/        # Configuration
-```
+## Configuration
 
-## Backend Integration
+All configuration is done through environment variables. See `.env.example` for available options:
 
-See `BACKEND_REQUIREMENTS.md` for detailed API specifications and requirements.
+### Backend Configuration
+- `LINKEDIN_EMAIL`: LinkedIn account email
+- `LINKEDIN_PASSWORD`: LinkedIn account password
+- `OPENAI_API_KEY`: OpenAI API key
+- `MAX_DAILY_CONNECTIONS`: Maximum daily connection requests
+
+### Frontend Configuration
+- `VITE_API_URL`: Backend API URL
+- `VITE_ENV`: Environment (development/production)
+- Feature flags and limits
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
 [Your chosen license]
 
-## Contact
+## Support
 
-Your Name - your.email@example.com
-Project Link: [https://github.com/yourusername/your-repo-name](https://github.com/yourusername/your-repo-name)
+For support, please [create an issue](your-repo-issues-url) or contact [your-email].
